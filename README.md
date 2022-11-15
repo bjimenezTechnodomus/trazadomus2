@@ -10,15 +10,22 @@ Sistema de trazabilidad para paquetes para esterilizar
 ### TODO
 - [ ] Interfaz adaptativa
 - [ ] Configuración de candados en el flujo
+  - [ ] Verificación de indicadores antes de enviar a destino
+  - [ ] Verificación por paquetes o por lote al terminar un lote
 - [ ] Tableros de información básica
 - [ ] Niveles de acceso
+- [ ] Descarga de las consultas en `.csv`
+
+### Siguientes etapas
+Recreación de etiquetas en la webapp
 
 ## Terminal de registro
 
 ### TODO
 - [ ] Facilitar el clonado del sistema
-- [ ] Script de inicialización y modo kiosko
-- [ ] Temporizador del tiempo abierto sin actividad
+- [ ] Script de configuracion inicial
+- [ ] Activar modo kiosko
+- [ ] Temporizador del tiempo abierto sin actividad > cierre de sesión del usuario a los 10 min
 - [ ] Integración de botones de control de reTerminal
 - [ ] Implementación de la función de apagado de la reTerminal
 
@@ -38,4 +45,15 @@ Sistema de trazabilidad para paquetes para esterilizar
 ### Carcasa
 - [ ] Eliminación de curvas innecesarias
 - [ ] Repanelizado de las partes
+
+# Entrega Intellilab
+Imagen para raspberry con script de inicialización
+Zip de la webapp
+Esquema de la base de datos
+
+
+## ToDo
+- [ ] Definir el hosting
+- [ ] Requisitos del hosting
+
 
