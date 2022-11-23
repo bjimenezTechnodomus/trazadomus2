@@ -1,11 +1,18 @@
-# trazadomus2.0
-Sistema de trazabilidad para paquetes para esterilizar 
+# Trazadomus 2.0
+Sistema de trazabilidad de paquetes en el proceso de esterilización en la CEyE de los hospitales
 
 ## WebApp
 
 ### Bugs
 - [ ] La actualización de las hojas de códigos crea nuevas hojas de códigos
 - [ ] No evita duplicación de los nombres de las hojas de códigos
+
+### Pruebas
+- [ ] Crear usuario. Se crea un usario, verifica que no exista antes. Solicita datos del usuario. Asigna permisos y un grupo.
+- [ ] Crea cliente. Un cliente contiene a uno o más usuarios. Un cliente tiene uno o mas sets o kits. Un cliente tiene uno o más esterilizadores.
+- [ ] Crear sets. Un usuario administrador puede crear un set. Cada set esta asignado a un cliente. El set tiene una fecha de caducidad.
+- [ ] Crear administrador. Un usuario adquiere permisos de escritura de la configuración de un cliente, lo que incluye: Crear otros usuarios. Crear sets. Consultar tablas y reportes.
+- [ ] Crear esterilizador. Un esterilizador esta asociado a un cliente.
 
 ### TODO
 - [ ] Interfaz adaptativa
