@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap" rel="stylesheet">
+        <link rel="shortcut icon" type="image/x-icon" href="img/soloLogo.ico">
+        <link href="css/index.css" rel="stylesheet">
+        <link href="css/indexResp.css" rel="stylesheet">
+        <script src="js/index.js"></script>
+    <title>Dashboard</title>
+
+</head>
+
+<body>
+        
+            <div id="wrapper">
+
+                <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-gradient-primary" id="sidebar-wrapper">
+                    
+                    <br>
+                    <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                      <img src="img/technodomus.png" width="40" class="d-inline-block align-top" alt="Trazadomus" style="margin-right: 10px">
+                      <span class="fs-4">Trazadomus</span>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                      <li class="nav-item">
+                        <a href="#" onclick="changeSide(this)" name="clientes" class="nav-link text-white active" id="1" aria-current="page">
+                            <img src="img/account.png" width="30" height="30" class="d-inline-block" alt="Clientes" style="margin-right:7px;">
+                            Clientes
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" onclick="changeSide(this)" name="equipos" class="nav-link text-white" id="2">
+                            <img src="img/box.png" width="30" height="30" class="d-inline-block align-top" alt="Equipos" style="margin-right:7px;">
+                            Equipos
+                        </a>
+                      </li>
+
+                    </ul>
+                    <div class="bottom">
+                        <hr>
+                        <a href="#" id="dnombre" class="d-flex align-items-center text-white text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
+                            Benjamin Jimenez
+                        </a>
+
+                        <a href="#" onclick="changeSide(this)" class="nav-link text-white" id="3"> 
+                            <img src="img/logout.png" width="30" height="30" class="d-inline-block align-top" alt="Salir" style="margin-right:7px;">
+                            Salir
+                        </a>
+
+                    </div>
+
+                  </div>
+
+            
+            <div class="col-sm-9 col-md-9" id="page-content-wrapper">
+                <div class="row">
+                    <br>
+                    <br>
+                    <br>
+                </div>
+                
+                <div class="row">
+                    
+                    <div class="row" id="clientes" >
+                        <div class="row">
+                            <h1 class="titulo">Clientes</h1>
+                        </div>
+                        <hr>
+                        <div class="row justify-content-end">
+                            <div class="col-3 text-end">
+                                <button class="btn btn-add" onclick="addClientMod()" id="addClient"><img id="plus" src="img/plus.png" width=20> Agregar un cliente</button>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <table class="table table-bordered" id="tablaClientes">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Cliente</th>
+                                            <th scope="col"># Equipos</th>
+                                            <th scope="col"># Ciclos</th>
+                                            <th scope="col"># Usuarios</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="bodyClientes">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <div class="row" id="usuarios" hidden>
+                    <div class="row">
+                        <h1 class="titulo">Usuarios</h1>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-end">
+                            <div class="col-3 text-end">
+                                <button class="btn btn-add" onclick="addUserMod()" id="addUser"><img id="plus" src="img/plus.png" width=20> Agregar un usuario</button>
+                            </div>
+                        </div>
+                    <div class="row">
+                        <div class="col">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Correo electrónico</th>
+                                        <th scope="col">Rol</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyUsuarios">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> 
+                    
+                <div class="row" id="equipos" hidden>
+                    <div class="row">
+                        <h1 class="titulo">Equipos</h1>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Cliente</th>
+                                        <th scope="col">Última actualización</th>
+                                        <th scope="col">Estatus</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyEquipos">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+<div class="modal fade" id="usuarioModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-#155696 text-decoration-none">
+                <span class="fs-4">Editar usuario</span>
+                </a>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <div class="modal-body">
+
+                <label class="form-label" for="editNombreA">Nombre y apellido</label>
+                <div class="input-group" id="editNombreA">
+                    <input type="text" class="form-control" id="editNombre">
+                    <input type="text" class="form-control" id="editApellido">
+                </div>
+                <br>
+                <label class="form-label" for="editCorreo">Correo Electrónico</label>
+                <div class="form-check">
+                    <input type="email" class="form-control" id="editCorreo">
+                </div>
+                <br>
+                <label class="form-label">Rol</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="roles" id="rol1" value="option1">
+                    <label class="form-check-label" for="rol1"> Administrador </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="roles" id="rol2" value="option2">
+                    <label class="form-check-label" for="rol2"> Consulta </label>
+                </div>
+                <br>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger me-auto" onclick="deleteU(this)" id="deleteU" data-bs-dismiss="modal">Eliminar cliente</button>
+                <button type="button" class="btn btn-primary" onclick="uploadU(this)" id="uploadU" data-bs-dismiss="modal">Guardar y salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="modal fade" id="newusuarioModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-#155696 text-decoration-none">
+                <span class="fs-4">Agregar usuario</span>
+                </a>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <div class="modal-body">
+
+                <label class="form-label" for="newNombreA">Nombre y apellido</label>
+                <div class="input-group" id="newNombreA">
+                    <input type="text" class="form-control" id="newNombre">
+                    <input type="text" class="form-control" id="newApellido">
+                </div>
+                <br>
+                <label class="form-label" for="newCorreo">Correo Electrónico</label>
+                <div class="form-check">
+                    <input type="email" class="form-control" id="newCorreo">
+                </div>
+                <br>
+                <label class="form-label">Rol</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="roles" id="newrol1" value="option1" checked>
+                    <label class="form-check-label" for="newrol1"> Administrador </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="roles" id="newrol2" value="option2">
+                    <label class="form-check-label" for="newrol2"> Consulta </label>
+                </div>
+                <br>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="uploadNewU(this)" id="uploadNewU" data-bs-dismiss="modal">Guardar y salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="clienteModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-#155696 text-decoration-none">
+                <span class="fs-4">Editar cliente</span>
+                </a>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <div class="modal-body">
+
+                <label class="form-label" for="editNombreA">Nombre</label>
+                <div class="input-group" id="editNombreA">
+                    <input type="text" class="form-control" id="editNombreC">
+                </div>
+                <br>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger me-auto" onclick="deleteC(this)" id="deleteC" data-bs-dismiss="modal">Eliminar cliente</button>
+                <button type="button" class="btn btn-primary" onclick="uploadC(this)" id="uploadC" data-bs-dismiss="modal">Guardar y salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="modal fade" id="newclienteModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-#155696 text-decoration-none">
+                <span class="fs-4">Agregar cliente</span>
+                </div>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <div class="modal-body">
+
+                <label class="form-label" for="newNombreA">Nombre</label>
+                <div class="input-group" id="newNombreA">
+                    <input type="text" class="form-control" id="newNombreC">
+                </div>
+                <br>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="uploadNewC(this)" id="uploadNewC" data-bs-dismiss="modal">Guardar y salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+</div>
+</body>
+    
+</html>

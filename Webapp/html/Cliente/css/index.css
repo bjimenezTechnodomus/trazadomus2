@@ -1,0 +1,188 @@
+html {
+  font-family: 'Roboto';
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #155696;
+  text-align: left;
+  background-color: #d6d6d6;
+}
+.qr
+{
+    border:2px solid #155696;
+    border-radius: 10px;
+    width:110px;
+    height: 110px;
+    margin: auto;
+}
+.qr > canvas {
+  display: block; /* Required to allow centering of the canvas */
+  margin: 0 auto;
+}
+.qr > img {
+  margin: 0 auto;
+}
+.inptext
+{
+    /*background-color: lightgray;*/
+}
+.caducText
+{
+    width:15px !important;
+}
+.stretched-link
+{
+    text-decoration: none;
+}
+.qrrow
+{
+
+    padding:15px;
+
+}
+.orng
+{
+    background-color: #ff6b35;
+    width: 120px;
+}
+.card
+{
+    padding:5px;
+}
+.row
+{
+    padding-right: 0px;
+}
+.labelEtiqueta
+{
+    margin-bottom: -10px;
+    margin-left: -5px;
+}
+.imLbl
+{
+    margin-left: -20px;
+    margin-right: 10px;
+}
+.table
+{
+    background-color: #ffffff;
+    border-radius: 15px;
+    
+}
+.iconR
+{
+    margin-right: 7px;
+}
+#acc
+{
+   margin-left: 20px;
+   margin-top: 20px;
+    
+}
+.circle { 
+   width: 70px !important;
+   height: 70px !important;
+   background: #155196; 
+   -moz-border-radius: 70px; 
+   -webkit-border-radius: 70px; 
+   border-radius: 50%;
+}
+.accLogo
+{
+    margin-top: 7px;
+}
+#nombreU
+{
+    margin-top: 30px;
+}
+#historial
+{
+    background-color: #155696;
+}
+.btn-azul
+{
+    background-color: #155696;
+    color:white;
+}
+#guardarConfig
+{
+    margin-top:20px;
+}
+#historialBody
+{
+    background-color: #ffffff;
+}
+.card
+{
+    padding:10px;
+}
+#plus
+{
+    margin-right: 5px;
+}
+th, td
+{
+    padding:10px;
+}
+.btn-add
+{
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    color:#FF6B35;
+}
+
+.bottom
+{
+    height:auto;
+
+}
+.btn-modif
+{
+    background-color: #D6D6D6;
+}
+#sidebar
+{
+    width: 280px; 
+    height: 100%; 
+    position: fixed;
+}
+.text-orng
+{
+    color:#FF6B35; 
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+#wrapper {
+  display: flex;
+}
+
+#wrapper #content-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#wrapper #content-wrapper #content {
+  flex: 1 0 auto;
+}
+#content-wrapper
+{
+    margin-left: -80px;
+}
+.bg-gradient-primary {
+  background-color: #155196;
+  background-size: cover;
+}

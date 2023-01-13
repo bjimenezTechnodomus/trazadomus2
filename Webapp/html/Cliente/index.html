@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap" rel="stylesheet">
+        <link rel="shortcut icon" type="image/x-icon" href="img/soloLogo.ico">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>    
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
+        <link href="css/index.css" rel="stylesheet">
+        <link href="css/indexResp.css" rel="stylesheet">
+        <!--<script type="text/javascript" src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+        <script type="text/javascript" src="js/indexV3.js"></script>
+        <title>Dashboard</title>
+
+</head>
+
+<body>
+        <div id="wrapper">
+
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-gradient-primary" id="sidebar-wrapper">
+
+                <br>
+                <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                  <img src="img/technodomus.png" width="40" class="d-inline-block align-top" alt="Trazadomus" style="margin-right: 10px">
+                  <span class="fs-4">Trazadomus</span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                  <li class="nav-item">
+                    <a href="#" onclick="changeSide(this)" class="nav-link text-white active" aria-current="page" id="1">
+                        <img src="img/account.png" width="30" height="30" class="d-inline-block" alt="Usuarios">
+                        Usuario
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" onclick="changeSide(this)" class="nav-link text-white" id="2">
+                        <img src="img/box.png" width="30" height="30" class="d-inline-block align-top iconR" alt="Paquetes" >
+                        Paquetes
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" onclick="changeSide(this)" class="nav-link text-white" id="3">
+                        <img src="img/tag.png" width="30" height="30" class="d-inline-block align-top iconR" alt="Etiquetas">
+                        Etiquetas
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" onclick="changeSide(this)" class="nav-link text-white" id="4">
+                        <img src="img/printer.png" width="30" height="30" class="d-inline-block align-top iconR" alt="Impresión" >
+                        Impresión
+                    </a>
+                  </li>
+                </ul>
+                <div class="bottom">
+                    <hr>
+                    <a href="#" id="dnombre" class="d-flex align-items-center text-white text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
+                        Benjamin Jimenez
+                    </a>
+
+                    <a href="#" onclick="changeSide(this)" class="nav-link text-white" id="5">
+                        <img src="img/gear.png" width="30" height="30" class="d-inline-block align-top iconR" alt="Configuración">
+                        Configuración
+                    </a>
+
+                    <a href="#" onclick="changeSide(this)" class="nav-link text-white" id="6">
+                        <img src="img/logout.png" width="30" height="30" class="d-inline-block align-top iconR" alt="Salir">
+                        Salir
+                    </a>
+
+                </div>
+
+              </div>
+
+        
+        <div id="page-content-wrapper">
+            <div class="row">
+                <br>
+                <br>
+                <br>
+            </div>
+            
+            <div class="row" id="usuario">
+            
+                <div class="row">
+                    <h1 class="titulo">Usuario</h1>
+                </div>
+                <hr>
+                <div class="row" name="contenidoUsuario">
+                    <div class="col-7" name="usuario">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-row mb-3">
+                                    <div class="col-2" id="acc">
+                                        <div class="circle text-center align-items-center"><img class="img-fluid center-block accLogo" width=50px src="img/account.png"></div>
+                                    </div>
+                                    <div class="text-center" ><h3 id="nombreU">Benjamin Jimenez</h3></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                        
+                                <canvas id="semanaGrafica"></canvas>
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-5" name="historial">
+                        <div class="card" id="historial">
+                            <div class="card-header">
+                                <h3 class="text-white"><img src="img/calendar.png" width="30" class="d-inline-block align-top iconR" alt="Historial">Historial</h3> 
+                            </div>
+                            <div class="card-body" id="historialBody">
+                                <ul class="list-group list-group-flush" id="historialList">
+                                  
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="row" id="paquetes" hidden>
+            
+                <div class="row">
+                    <h1 class="titulo">Paquetes</h1>
+                </div>
+                <hr>
+                <div class="row" name="contenidoUsuario">
+                    <div class="col" name="tabla">
+                        <table id="table_id" class="table display">
+                            <thead>
+                                <tr>
+                                    <th>Paquete</th>
+                                    <th>Kit</th>
+                                    <th>Fecha</th>
+                                    <th>Caducidad</th>
+                                    <th>Usuario</th>
+                                    <th>Indicador</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodyPaquetes">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="row" id="etiquetas" hidden>
+            
+                <div class="row">
+                    <h1 class="titulo">Etiquetas</h1>
+                </div>
+                <hr>
+                <div class="row justify-content-between" name="contenidoEtiquetas">
+                    <div class="col-4" name="opcione1">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <a href="#" class="stretched-link" id="e1" onclick="manejoHojas(this)">
+                                        <img src="img/plus.png" class="img-fluid imLbl" id="add1" width=35px>
+                                        <label class="form-check-label" for="add1">
+                                            <h4 class="labelEtiqueta">Crear hoja</h4>
+                                        </label>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-4" name="opcione2">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <a href="#" class="stretched-link" id="e2" onclick="manejoHojas(this)">
+                                        <img src="img/editing.png" class="img-fluid imLbl" id="add2" width=35px>
+                                        <label class="form-check-label" for="add2">
+                                            <h4 class="labelEtiqueta">Modificar hojas</h4>
+                                        </label>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-4" name="opcione3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <a href="#" class="stretched-link" id="e3" onclick="manejoHojas(this)">
+                                        <img src="img/see.png" class="img-fluid imLbl" id="add3" width=35px>
+                                        <label class="form-check-label" for="add3">
+                                            <h4 class="labelEtiqueta">Ver hojas</h4>
+                                        </label>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row" id="pEtiquetas" hidden>
+            
+                <div class="row">
+                    <h1 class="titulo" id="tituloP"></h1>
+                </div>
+                <hr>
+                <div class="row" name="contenidoAddCodigos">
+                    <div class="card col" name="codigos">
+                        <div class="row qrrow">
+                            <div class="col-2 text-center">
+                                <div class="text-center">QR</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-center">Descripción</div>
+                            </div>
+                            <div class="col-2">
+                                <div class="text-center">QR</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-center">Descripción</div>
+                            </div>
+                        </div>
+                        <div class="row qrrow">
+                            <div class="col-2">
+                                <div class="qr" id="qrcode1"></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control inptext" id="txt1">
+                                  <input type="text" class="form-control caducText" placeholder="Caducidad" id="cad1" aria-label="Caducidad">
+                                </div>
+                                
+                                <input type="checkbox" class="form-check-input checkL" id="c1" >
+                                <label class="form-check-label cLabel" for="c1" >Lleva listado de contenido?</label>
+                            </div>
+                            <div class="col-2">
+                                <div class="qr" id="qrcode2"></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control inptext" id="txt2">
+                                  <input type="text" class="form-control caducText" placeholder="Caducidad" id="cad2" aria-label="Caducidad">
+                                </div>
+                                <input type="checkbox" class="form-check-input checkL" id="c2" >
+                                <label class="form-check-label cLabel" for="c2" >Lleva listado de contenido?</label>
+                            </div>
+                        </div>
+                        <div class="row qrrow">
+                            <div class="col-2">
+                                <div class="qr" id="qrcode3"></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control inptext" id="txt3">
+                                  <input type="text" class="form-control caducText" placeholder="Caducidad" id="cad3" aria-label="Caducidad">
+                                </div>
+                                <input type="checkbox" class="form-check-input checkL" id="c3" >
+                                <label class="form-check-label cLabel" for="c3" >Lleva listado de contenido?</label>
+                            </div> 
+                            <div class="col-2">
+                                <div class="qr" id="qrcode4"></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control inptext" id="txt4">
+                                  <input type="text" class="form-control caducText" placeholder="Caducidad" id="cad4" aria-label="Caducidad">
+                                </div>
+                                <input type="checkbox" class="form-check-input checkL" id="c4" >
+                                <label class="form-check-label cLabel" for="c4" >Lleva listado de contenido?</label>
+                            </div>
+                        </div>
+                        <div class="row qrrow">
+                            <div class="col-2">
+                                <div class="qr" id="qrcode5"></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control inptext" id="txt5">
+                                  <input type="text" class="form-control caducText" placeholder="Caducidad" id="cad5" aria-label="Caducidad">
+                                </div>
+                                <input type="checkbox" class="form-check-input checkL" id="c5" >
+                                <label class="form-check-label cLabel" for="c5" >Lleva listado de contenido?</label>
+                            </div>
+                            <div class="col-2">
+                                <div class="qr" id="qrcode6"></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control inptext" id="txt6">
+                                  <input type="text" class="form-control caducText" placeholder="Caducidad" id="cad6" aria-label="Caducidad">
+                                </div>
+                                <input type="checkbox" class="form-check-input checkL" id="c6" >
+                                <label class="form-check-label cLabel" for="c6" >Lleva listado de contenido?</label>
+                            </div>
+                        </div>
+                        <div class="row qrrow">
+                            <div class="col-2">
+                                <div class="qr" id="qrcode7"></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control inptext" id="txt7">
+                                  <input type="text" class="form-control caducText" placeholder="Caducidad" id="cad7" aria-label="Caducidad">
+                                </div>
+                                <input type="checkbox" class="form-check-input checkL" id="c7" >
+                                <label class="form-check-label cLabel" for="c7" >Lleva listado de contenido?</label>
+                            </div>
+                            <div class="col-2">
+                                <div class="qr" id="qrcode8"></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control inptext" id="txt8">
+                                  <input type="text" class="form-control caducText" placeholder="Caducidad" id="cad8" aria-label="Caducidad">
+                                </div>
+                                <input type="checkbox" class="form-check-input checkL" id="c8" >
+                                <label class="form-check-label cLabel" for="c8"  >Lleva listado de contenido?</label>
+                            </div>
+                        </div>
+                         
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 text-end">
+                                    <button type="button" class="btn orng text-white" id="buttonP">Registrar</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row" id="modifyP" hidden>
+                <div class="row">
+                    <h1 class="titulo">Modificar hojas</h1>
+                </div>
+                <hr>
+                <div class="row justify-content-between" name="contenidoHojas" id="bodyModifyP">
+                </div>
+            </div>
+            
+            <div class="row" id="print" hidden>
+                <div class="row">
+                    <h1 class="titulo">Imprimir hojas</h1>
+                </div>
+                <hr>
+                <div class="row justify-content-between" name="contenidoPrint" id="bodyPrint">
+                </div>
+            </div>
+            
+            <div class="row" id="config" hidden>
+                <div class="row">
+                    <h1 class="titulo">Configuración</h1>
+                </div>
+                <hr>
+                <div class="row justify-content-start">
+                    <h2>Candados</h2>
+                </div>
+                <div class="row justify-content-between">
+                    <div class="col">
+                        <div class="card">Verificación detiene el flujo de paquetes?
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                              <label class="btn active">
+                                <input type="radio" name="opcionesCandado1" id="candado11" autocomplete="off" value=1 checked> Si
+                              </label>
+                              <label class="btn">
+                                <input type="radio" name="opcionesCandado1" id="candado12" autocomplete="off" value=2> No
+                              </label>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="card">Procesar lote lleva a verificar paquetes individuales?
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                              <label class="btn active">
+                                <input type="radio" name="opcionesCandado2" id="candado21" autocomplete="off" checked value=1> Si
+                              </label>
+                              <label class="btn">
+                                <input type="radio" name="opcionesCandado2" id="candado22" autocomplete="off" value=2> No
+                              </label>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-start" >
+                    <div class="col">
+                        <button class="btn btn-azul" id="guardarConfig">Guardar</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <div class="modal fade" id="newPage">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-#155696 text-decoration-none">
+                    <span class="fs-4" id="tituloModalP"></span>
+                    </div>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                </div>
+
+                <div class="modal-body">
+                    <label class="form-label" for="newNombrePL">Nombre</label>
+                    <div class="input-group" id="newNombrePL">
+                        <input type="text" class="form-control" id="newNombreP">
+                    </div>
+                    <br>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="uploadNewP" data-bs-dismiss="modal"></button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="listado">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-#155696 text-decoration-none">
+                    <span class="fs-4">Listado de contenidos</span>
+                    </div>
+                    <!--<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>-->
+                </div>
+
+                <div class="modal-body">
+                    <label id="kitListT" for="inpg"></label>
+                    <div id="inpg" class="input-group input-group-sm mb-3">
+                        <div id="inpg1" class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="pinst1">1</span>
+                            <input type="text" id="inst1" class="form-control listObj">
+                        </div>
+                        <div id="inpg2" class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="pinst1">2</span>
+                            <input type="text" id="inst2" class="form-control listObj">
+                        </div>
+                        <div id="inpg3" class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="pinst1">3</span>
+                            <input type="text" id="inst3" class="form-control listObj">
+                        </div>
+                        <div id="inpg4" class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="pinst1">4</span>
+                            <input type="text" id="inst4" class="form-control listObj">
+                        </div>
+                        <div id="inpg5" class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="pinst1">5</span>
+                            <input type="text" id="inst5" class="form-control listObj">
+                        </div>
+                    </div>
+                    <br>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="uploadCheck"></button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="pageType">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-#155696 text-decoration-none">
+                    <span class="fs-4" >Tipo de hoja</span>
+                    </div>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                </div>
+
+                <div class="modal-body">
+                    <label class="form-label">Tipo</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="roles" id="type1" value="option1">
+                        <label class="form-check-label" for="type1"> Kits </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="roles" id="type2" value="option2">
+                        <label class="form-check-label" for="type2"> Usuarios </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="roles" id="type3" value="option3">
+                        <label class="form-check-label" for="type3"> Esterilizadores </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="roles" id="type4" value="option4">
+                        <label class="form-check-label" for="type4"> Destinos </label>
+                    </div>
+                    <br>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="continueType" onclick="chooseType()" data-bs-dismiss="modal">Continuar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+    
+</html>
